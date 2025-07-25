@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign Up - Ticket Trivia</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: url("{% static 'bookings.jpg' %}") no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        .signup-box {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 500px;
+            margin: 60px auto;
+            color: white;
+        }
+
+        h3 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: white;
+        }
+
+        .form-control {
+            margin-bottom: 15px;
+        }
+
+        .otp-box {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-box shadow">
+        <h3>Create an Account</h3>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.username.label_tag }} {{ form.username }}
+            {{ form.password.label_tag }} {{ form.password }}
+            {{ form.email.label_tag }} {{ form.email }}
+            {% if show_otp %}
+                <div class="otp-box">
+                    {{ otp_form.otp.label_tag }} {{ otp_form.otp }}
+                </div>
+            {% endif %}
+            <button type="submit" class="btn btn-success w-100">
+                {% if show_otp %}Verify OTP{% else %}Send OTP{% endif %}
+            </button>
+        </form>
+    </div>
+</body>
+</html>
+

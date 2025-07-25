@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+    html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+    }
+
+    .about-section {
+        background: url("{% static 'about_bg.jpg' %}") no-repeat center center fixed;
+        background-size: cover;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 40px 20px;
+        color: white;
+        text-align: center;
+    }
+
+    .about-content {
+        background-color: rgba(0, 0, 0, 0.6);
+        padding: 40px;
+        border-radius: 15px;
+        max-width: 900px;
+        width: 100%;
+    }
+
+    .about-content h2 {
+        font-size: 48px;
+        margin-bottom: 20px;
+    }
+
+    .about-content p {
+        font-size: 20px;
+        line-height: 1.8;
+    }
+</style>
+
+<div class="about-section">
+    <div class="about-content">
+        <h2>About Ticket Trivia</h2>
+        <p>
+            Welcome to <strong>Ticket Trivia</strong> — your one-stop solution for booking tickets to India’s most iconic monuments and national museums.
+            <br><br>
+            We simplify your travel planning by letting you explore and reserve tickets for historical places online. Whether it's the majestic Taj Mahal or a lesser-known heritage site, our platform helps you book with ease and security.
+            <br><br>
+            We aim to preserve history and make tourism smarter and more accessible by providing users with a seamless digital experience.
+        </p>
+    </div>
+</div>
+{% endblock %}

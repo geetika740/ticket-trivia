@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+    html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+    }
+
+    .contact-section {
+        background: url("{% static 'contact_bg.jpg' %}") no-repeat center center fixed;
+        background-size: cover;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 40px 20px;
+        color: white;
+        text-align: center;
+    }
+
+    .contact-content {
+        background-color: rgba(0, 0, 0, 0.6);
+        padding: 40px;
+        border-radius: 15px;
+        max-width: 900px;
+        width: 100%;
+    }
+
+    .contact-content h2 {
+        font-size: 40px;
+        margin-bottom: 20px;
+    }
+
+    .contact-content p {
+        font-size: 18px;
+        line-height: 1.8;
+    }
+
+    .contact-info p {
+        margin: 5px 0;
+    }
+</style>
+
+<div class="contact-section">
+    <div class="contact-content">
+        <h2>Contact Us</h2>
+        <p>
+            Have questions, feedback, or facing issues with ticket booking? Feel free to reach out to us!
+        </p>
+
+        <div class="contact-info">
+            <p><strong>Email:</strong> support@tickettrivia.com</p>
+            <p><strong>Phone:</strong> +91-9876543210</p>
+            <p><strong>Office Hours:</strong> Mon–Fri | 10:00 AM – 6:00 PM</p>
+            <p><strong>Address:</strong> Ticket Trivia HQ, Connaught Place, New Delhi, India</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

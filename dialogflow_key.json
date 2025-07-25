@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "ticket-trivia-chatbot",
+  "private_key_id": "43f9b60edd042bf14a645e852f3de0c9c92fb1be",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCLYZxw2rviltq6\nGfs+nnWZbruICKJjT0HEhYWmbXGOEVKG9tzDf/m19j9kX0RTdvHeMDGS8dieUkI1\njlUD5xElnPVcEteJrmywhUmM8Hr8uIW+WIJT9wHUgyOJwOJ9qvUC09vatmC4xSfL\nCM2g0PbhQJwyAOgSVkNhRsWey+ER9iZCsWSIk3iV25+irLsZoQJsB3vo80mAzBrx\nG+DfzdKxUXilUN04lwOYsctME0hZ4h+x3xEJHRxKUPgm2LN22u+7T5LGmaV9qTGN\nijOujEkcnxYkh2nIYKMAV467UefXK9pK9uhwT50yzxTYejI3+YkMXVgvBjTHR7n7\n15k+xoHlAgMBAAECggEACbtnEPo05D1kSFpIELc/vtbcgUMZE5YVIYOxMU2zABh1\nirbx8zScWvg2tOtx+eH0QW9cBsacOXHE7bhid0NLDzVGbIdkRVjIfgrQd+bSr5Ky\nw/eqIfK9TflaIeQ17FBjiy7/yuWxGzWo8aRLt07f7hp0zYkCq0Uar1AhvFTAAmDz\nKVmrbHoyxkt6VQj78CBFp2h9lqsayFkezV5JYDI4Ty80IaDrWRtvV5LNQX4hU91u\nNEInpXdPa0Xnpfuuy7iDfeLZojIYHAeZSroxZpoWjGbDcbWw4CHUd9A0oVwxRlWd\nkuKFL7VGpw24k9Onz68zrj7TPtSH5Ihp7PdKDPKcAQKBgQC/ZOfqZGpSQ1okk0vf\nn7D9Yhg0E0UwOoN0z6DkbJ2z9m3ahdzenuRIx0YWgLxIUz0Nk7SF0LfHWNem0KfI\n+rEN6benxB9H9w07cb0Omad77FLeCzVFje88ULpTi1boQVTD0FxNylbpBGnENBu1\nx7jqmVACST+iL+PFWg0IBCQgWQKBgQC6bhOA9Uz+6PsuDWcRkWwdrA1vRC/OyaVW\n/6EZLZ29+uqXz4GXGja7i3uMRjoy73EJ96gWbikWJDJw5Ti0XVI0tJhkdi9+v+mJ\nq7fhAllTF2Ka+0V3JbRG0V3gsbmCIRdRFI6EJWLdj7evb8TFpnYjEVhw4cKduH3/\n96dEA1McbQKBgHQjbvc0Z6/zXsfC+c+Av42B8N3os5tIZmyDcUYrAqcpag+oGxab\npDrlcQpGo/nfSLTsZCavOFWm+3UmOCoktTuUDvWmdLTenRDtO6OYaaExDjfe5TyH\nnBwlgGshqmLVAfKwhNJPbd2H6AY++HGd9/+jeIFqoUpxdO1Ub4Plv2ZBAoGAPgfO\nOYRlIBQJL2OKPdAzNxQ+TB1WAuoZN39K7QO+jq3kTKrgpZQ1TeW1MBFV4AjHhdd/\neCcjSJi2p9W9LlY2ug60/ghM+VGFtScLwbR0YC9RwduFW4WSHFYhdFfuL5wvE+1R\nFisSYEInjhoUUOd4O2bUFIsppCz0z6xpXTn192kCgYA6FuZbRL0vdQP8pLgc3SCw\nqo+mrZ3IfLw4koqFXtQnL2/rgGifk8pa7zaXM6BK8K65CrzhhNy+MY8nVJ+flsjU\n8f32D6hSSZmpDVTSktf+LgOlHZ8NIqs7nUA1N/o/zUpQx8XqFkZs1VR9ILXFij11\nKoMT//Nf+s4xug3VyuWLlA==\n-----END PRIVATE KEY-----\n",
+  "client_email": "dialogflow-agent@ticket-trivia-chatbot.iam.gserviceaccount.com",
+  "client_id": "106083610478159470734",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/dialogflow-agent%40ticket-trivia-chatbot.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
