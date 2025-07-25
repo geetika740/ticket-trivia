@@ -53,3 +53,13 @@ python manage.py migrate
 python manage.py runserver
 
 Built with ❤️ by Geetika Kakkar
+
+## 🧑‍💻 Future Improvements
+
+React frontend for better UX
+Multi-language chatbot
+Role-based access for staff/admin
+Email notifications
+
+## 🧾 License
+This project is licensed under the MIT License.
