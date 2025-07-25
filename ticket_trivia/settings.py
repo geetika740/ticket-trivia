@@ -93,8 +93,8 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 # Stripe Keys
-STRIPE_PUBLISHABLE_KEY = "pk_test_51RjgsyQ2inOX63gsv8EXMtofQTeYdyMl9JWf9g1Fws5k5y5YgqPNlC6oFqqnRRoU0EkaBqDpiOOb6Ie8y45wEhef00dSEASzZf"
-STRIPE_SECRET_KEY = "sk_test_51RjgsyQ2inOX63gszX6cRWFaioAWxG5xzUsAsVN6behfa4Su5Seip0KKg0NmN7dtwPUhpjwwujlHowcK7YGqDeWX00l7mheEmL"
+# STRIPE_PUBLISHABLE_KEY = "pk_test_51RjgsyQ2inOX63gsv8EXMtofQTeYdyMl9JWf9g1Fws5k5y5YgqPNlC6oFqqnRRoU0EkaBqDpiOOb6Ie8y45wEhef00dSEASzZf"
+# STRIPE_SECRET_KEY = "sk_test_51RjgsyQ2inOX63gszX6cRWFaioAWxG5xzUsAsVN6behfa4Su5Seip0KKg0NmN7dtwPUhpjwwujlHowcK7YGqDeWX00l7mheEmL"
 
 # ✅ Email settings for OTP
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
