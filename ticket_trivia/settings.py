@@ -96,19 +96,22 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # STRIPE_PUBLISHABLE_KEY = "pk_test_51RjgsyQ2inOX63gsv8EXMtofQTeYdyMl9JWf9g1Fws5k5y5YgqPNlC6oFqqnRRoU0EkaBqDpiOOb6Ie8y45wEhef00dSEASzZf"
 # STRIPE_SECRET_KEY = "sk_test_51RjgsyQ2inOX63gszX6cRWFaioAWxG5xzUsAsVN6behfa4Su5Seip0KKg0NmN7dtwPUhpjwwujlHowcK7YGqDeWX00l7mheEmL"
 
-# ✅ Email settings for OTP
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_PORT = 587
-# EMAIL_USE_TLS = True
-# EMAIL_HOST_USER = 'kakkargeetika200@gmail.com'  # Replace this
-# EMAIL_HOST_PASSWORD = 'yzqrecaliwehtthe'  # Use App Password for Gmail
-
-STRIPE_PUBLISHABLE_KEY = os.getenv("STRIPE_PUBLISHABLE_KEY")
-STRIPE_SECRET_KEY = os.getenv("STRIPE_SECRET_KEY")
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+# EMAIL_HOST_USER = 'kakkargeetika200@gmail.com'
+# EMAIL_HOST_PASSWORD = 'yzqrecaliwehtthes'  # Replace with actual App Password
 
 EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
 
+STRIPE_PUBLISHABLE_KEY = os.getenv("STRIPE_PUBLISHABLE_KEY")
+STRIPE_SECRET_KEY = os.getenv("STRIPE_SECRET_KEY")
+
+
+
 # Dialogflow key JSON
 GOOGLE_APPLICATION_CREDENTIALS = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
+
+
