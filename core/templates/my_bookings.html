@@ -1,115 +1,126 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>My Bookings - Ticket Trivia</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<style>
-    body {
-        margin: 0;
-        padding: 0;
-        background: url("{% static 'bookings.jpg' %}") no-repeat center center fixed;
-        background-size: cover;
-        backdrop-filter: blur(2px);
-        min-height: 100vh;
-    }
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: url("{% static 'bookings.jpg' %}") no-repeat center center fixed;
+            background-size: cover;
+            backdrop-filter: blur(3px);
+            min-height: 100vh;
+        }
 
-    .navbar {
-        background-color: rgba(0, 0, 0, 0.85);
-    }
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.85);
+        }
 
-    .nav-logo {
-        height: 40px;
-        margin-right: 10px;
-    }
+        .nav-logo {
+            height: 40px;
+            margin-right: 10px;
+            border-radius: 5px;
+        }
 
-    .content-box {
-        background-color: rgba(0, 0, 0, 0.7); /* Dark translucent box */
-        padding: 30px;
-        border-radius: 15px;
-        max-width: 850px;
-        margin: 60px auto;
-        color: white;
-    }
+        .content-box {
+            background-color: rgba(0, 0, 0, 0.75);
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 900px;
+            margin: 70px auto;
+            color: white;
+        }
 
-    h3 {
-        text-align: center;
-        color: white;
-        margin-bottom: 30px;
-        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
-    }
+        h3 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #ffffff;
+            text-shadow: 2px 2px 4px #000;
+        }
 
-    .table {
-        border-collapse: separate;
-        border-spacing: 0 5px;
-    }
+        .table thead th {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+        }
 
-    .table thead th {
-        background-color: rgba(0, 0, 0, 0.85);
-        color: white;
-        font-weight: bold;
-        text-align: center;
-    }
+        .table tbody td {
+            background-color: #ffffff;
+            color: #000000;
+            text-align: center;
+        }
 
-    .table tbody td {
-        background-color: rgba(255, 255, 255, 0.96);
-        color: black;
-        text-align: center;
-    }
-
-    .table tbody tr:not(:last-child) {
-        border-bottom: 1px solid #ccc;
-    }
-</style>
-
+        .chatbot-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 999;
+            width: 55px;
+            height: 55px;
+        }
+    </style>
 </head>
 <body>
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark px-4">
         <a class="navbar-brand d-flex align-items-center" href="/">
             <img src="{% static 'logo.jpg' %}" class="nav-logo" alt="Logo">
-           
+            <span class="ms-2">Ticket Trivia</span>
         </a>
-        <div class="collapse navbar-collapse">
-            <ul class="navbar-nav ms-auto">
+        <div class="collapse navbar-collapse justify-content-end">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
                 {% if user.is_authenticated %}
-                    <li class="nav-item"><a class="btn btn-outline-light" href="{% url 'my_bookings' %}">My Bookings</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="{% url 'my_bookings' %}">My Bookings</a></li>
+                    <li class="nav-item"><a class="nav-link text-danger" href="{% url 'logout' %}">Logout</a></li>
                 {% else %}
-                    <li class="nav-item"><a class="btn btn-outline-light" href="/admin/login/">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
                 {% endif %}
             </ul>
         </div>
     </nav>
 
+    <!-- Content -->
     <div class="container">
         <div class="content-box shadow">
             <h3>My Bookings</h3>
             {% if bookings %}
-                <table class="table table-light table-striped">
-                    <thead class="table-dark">
-                        <tr>
-                            <th>Monument</th>
-                            <th>Visit Date</th>
-                            <th>Tickets</th>
-                            <th>Total Amount</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for booking in bookings %}
-                        <tr>
-                            <td>{{ booking.monument.name }}</td>
-                            <td>{{ booking.date }}</td>
-                            <td>{{ booking.num_tickets }}</td>
-                            <td>₹{{ booking.total_amount }}</td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>Monument</th>
+                                <th>Visit Date</th>
+                                <th>Tickets</th>
+                                <th>Total Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for booking in bookings %}
+                            <tr>
+                                <td>{{ booking.monument.name }}</td>
+                                <td>{{ booking.date }}</td>
+                                <td>{{ booking.num_tickets }}</td>
+                                <td>₹{{ booking.total_amount }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
             {% else %}
                 <p class="text-center text-light">You have no bookings yet.</p>
             {% endif %}
         </div>
     </div>
+
+    <!-- Chatbot Icon -->
+    <a href="{% url 'chatbot' %}">
+        <img src="{% static 'chatbot.png' %}" class="chatbot-icon" alt="Chatbot">
+    </a>
 </body>
 </html>

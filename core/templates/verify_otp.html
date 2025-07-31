@@ -1,12 +1,16 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 {% block content %}
-  <div class="container mt-5">
-    <h2>Enter OTP sent to your email</h2>
-    <form method="post">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <button class="btn btn-success">Verify OTP</button>
-    </form>
-  </div>
+<div class="container mt-5 d-flex justify-content-center">
+    <div class="card p-4 shadow-lg" style="max-width: 500px; width: 100%; border-radius: 15px;">
+        <h4 class="mb-4 text-center text-primary">Email OTP Verification</h4>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group mb-3">
+                <label for="otp" class="form-label">Enter the OTP sent to your email</label>
+                <input type="text" name="otp" class="form-control" placeholder="Enter OTP" required />
+            </div>
+            <button type="submit" class="btn btn-success w-100">Verify OTP</button>
+        </form>
+    </div>
+</div>
 {% endblock %}
-

@@ -1,120 +1,38 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Book {{ monument.name }} - Ticket Trivia</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        html, body {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            width: 100%;
-        }
 
-        body {
-            background: url("{% static 'booking_bg.jpg' %}") no-repeat center center fixed;
-            background-size: cover;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
+{% block content %}
+<style>
+    body {
+        background: url("{% static 'booking_bg.jpg' %}") no-repeat center center fixed;
+        background-size: cover;
+    }
 
-        .content-box {
-            background-color: rgba(255, 255, 255, 0.96);
-            padding: 25px;
-            border-radius: 15px;
-            max-width: 600px;
-            margin: auto;
-            margin-top: 80px;
-            margin-bottom: 40px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
+    .content-box {
+        background-color: rgba(255, 255, 255, 0.96);
+        padding: 25px;
+        border-radius: 15px;
+        max-width: 600px;
+        margin: 80px auto 40px auto;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+</style>
 
-        .navbar {
-            background-color: rgba(0, 0, 0, 0.85);
-        }
-
-        .nav-logo {
-            height: 40px;
-            margin-right: 10px;
-        }
-    </style>
-</head>
-<body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark px-4">
-        <a class="navbar-brand d-flex align-items-center" href="/">
-            <img src="{% static 'logo.jpg' %}" class="nav-logo" alt="Logo">
-        </a>
-        <div class="ms-auto">
-            <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'my_bookings' %}">My Bookings</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <!-- Ticket Booking Form -->
-    <div class="container">
-        <div class="content-box shadow">
-            <h3 class="text-center mb-4">Book Tickets for {{ monument.name }}</h3>
-            <form method="POST">
-                {% csrf_token %}
-                <div class="mb-3">
-                    <label for="visit_date" class="form-label">Visit Date:</label>
-                    <input type="date" id="visit_date" name="visit_date" class="form-control" required>
-                </div>
-                <div class="mb-3">
-                    <label for="num_tickets" class="form-label">Number of Tickets:</label>
-                    <input type="number" id="num_tickets" name="num_tickets" class="form-control" min="1" required>
-                </div>
-                <button type="submit" class="btn btn-success w-100">Proceed to Pay with Stripe</button>
-            </form>
-        </div>
+<div class="container">
+    <div class="content-box shadow">
+        <h3 class="text-center mb-4">Book Tickets for {{ monument.name }}</h3>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="visit_date" class="form-label">Visit Date:</label>
+                <input type="date" id="visit_date" name="visit_date" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="num_tickets" class="form-label">Number of Tickets:</label>
+                <input type="number" id="num_tickets" name="num_tickets" class="form-control" min="1" required>
+            </div>
+            <button type="submit" class="btn btn-success w-100">Proceed to Pay with Stripe</button>
+        </form>
     </div>
-
-    <!-- Chatbot Widget -->
-    <div id="chatbot-box" style="position: fixed; bottom: 80px; right: 20px; width: 300px; max-height: 400px; background: white; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.3); padding: 10px; overflow-y: auto; display: none; z-index: 1000;">
-        <div id="chat-messages" style="max-height: 300px; overflow-y: auto;"></div>
-        <input type="text" id="user-message" class="form-control mt-2" placeholder="Type your question..." />
-        <button class="btn btn-primary btn-sm mt-1 w-100" onclick="sendMessage()">Send</button>
-    </div>
-
-    <button id="chat-toggle" class="btn btn-warning rounded-circle" style="position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px; font-size: 24px; z-index: 1001;">
-        💬
-    </button>
-
-    <script>
-        const chatBox = document.getElementById('chatbot-box');
-        const toggleBtn = document.getElementById('chat-toggle');
-        const messagesDiv = document.getElementById('chat-messages');
-
-        toggleBtn.onclick = () => {
-            chatBox.style.display = chatBox.style.display === 'none' ? 'block' : 'none';
-        };
-
-        async function sendMessage() {
-            const userInput = document.getElementById('user-message').value;
-            if (!userInput) return;
-
-            messagesDiv.innerHTML += `<div><strong>You:</strong> ${userInput}</div>`;
-            document.getElementById('user-message').value = '';
-
-            const response = await fetch('/chatbot-response/', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRFToken': '{{ csrf_token }}'
-                },
-                body: JSON.stringify({ message: userInput })
-            });
-
-            const data = await response.json();
-            messagesDiv.innerHTML += `<div><strong>Bot:</strong> ${data.reply}</div>`;
-            messagesDiv.scrollTop = messagesDiv.scrollHeight;
-        }
-    </script>
-</body>
-</html>
+</div>
+{% endblock %}

@@ -41,11 +41,36 @@
     }
 
     .contact-info p {
-        margin: 5px 0;
+        margin: 8px 0;
+    }
+
+    .contact-info a {
+        color: #ffffff;
+        text-decoration: underline;
+    }
+
+    .chatbot-button {
+        position: fixed;
+        bottom: 25px;
+        right: 25px;
+        z-index: 1000;
+        background-color: #007bff;
+        border: none;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        font-size: 28px;
+        color: white;
+        box-shadow: 0 0 12px rgba(0,0,0,0.3);
+        cursor: pointer;
+    }
+
+    .chatbot-button:hover {
+        background-color: #0056b3;
     }
 </style>
 
-<div class="contact-section">
+<main class="contact-section">
     <div class="contact-content">
         <h2>Contact Us</h2>
         <p>
@@ -53,11 +78,23 @@
         </p>
 
         <div class="contact-info">
-            <p><strong>Email:</strong> support@tickettrivia.com</p>
-            <p><strong>Phone:</strong> +91-9876543210</p>
+            <p><strong>Email:</strong> <a href="mailto:support@tickettrivia.com">support@tickettrivia.com</a></p>
+            <p><strong>Phone:</strong> <a href="tel:+919876543210">+91-9876543210</a></p>
             <p><strong>Office Hours:</strong> Mon–Fri | 10:00 AM – 6:00 PM</p>
             <p><strong>Address:</strong> Ticket Trivia HQ, Connaught Place, New Delhi, India</p>
         </div>
     </div>
-</div>
+</main>
+
+<!-- Chatbot Button -->
+<button class="chatbot-button" onclick="toggleChatbot()">💬</button>
+
+<script>
+    function toggleChatbot() {
+        const chatbot = document.getElementById('chatbot-frame');
+        if (chatbot) {
+            chatbot.style.display = chatbot.style.display === 'none' ? 'block' : 'none';
+        }
+    }
+</script>
 {% endblock %}

@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block title %}Explore Indian Monuments | Ticket Trivia{% endblock %}
+
 {% block content %}
 <style>
     body {
@@ -31,44 +33,49 @@
     </form>
 
     <!-- 🏛️ Category Sections with Monument Cards and Carousel -->
-    {% for category, monuments in monuments_by_category.items %}
-        <h2 class="section-title mt-4">{{ category }}</h2>
-        <div class="row">
-            {% for monument in monuments %}
-                <div class="col-md-4 mb-4">
-                    <div class="card shadow">
-
-                        {% if monument.images.count > 0 %}
-                            <div id="carousel{{ monument.id }}" class="carousel slide" data-bs-ride="carousel">
-                                <div class="carousel-inner">
-                                    {% for img in monument.images.all %}
-                                        <div class="carousel-item {% if forloop.first %}active{% endif %}">
-                                            <img src="{{ img.image.url }}" class="d-block w-100" style="height: 250px; object-fit: cover;">
-                                        </div>
-                                    {% endfor %}
+    {% if monuments_by_category %}
+        {% for category, monuments in monuments_by_category.items %}
+            <h2 class="section-title mt-4">{{ category }}</h2>
+            <div class="row">
+                {% for monument in monuments %}
+                    <div class="col-md-4 mb-4">
+                        <div class="card shadow">
+                            {% if monument.images.count > 0 %}
+                                <div id="carousel{{ monument.id }}" class="carousel slide" data-bs-ride="carousel">
+                                    <div class="carousel-inner">
+                                        {% for img in monument.images.all %}
+                                            <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                                                <img src="{{ img.image.url }}" class="d-block w-100 img-fluid"
+                                                     style="max-height: 250px; object-fit: cover;" alt="{{ monument.name }}">
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                    {% if monument.images.count > 1 %}
+                                        <button class="carousel-control-prev" type="button" data-bs-target="#carousel{{ monument.id }}" data-bs-slide="prev">
+                                            <span class="carousel-control-prev-icon"></span>
+                                        </button>
+                                        <button class="carousel-control-next" type="button" data-bs-target="#carousel{{ monument.id }}" data-bs-slide="next">
+                                            <span class="carousel-control-next-icon"></span>
+                                        </button>
+                                    {% endif %}
                                 </div>
-                                {% if monument.images.count > 1 %}
-                                <button class="carousel-control-prev" type="button" data-bs-target="#carousel{{ monument.id }}" data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon"></span>
-                                </button>
-                                <button class="carousel-control-next" type="button" data-bs-target="#carousel{{ monument.id }}" data-bs-slide="next">
-                                    <span class="carousel-control-next-icon"></span>
-                                </button>
-                                {% endif %}
-                            </div>
-                        {% else %}
-                            <img src="{% static 'default-monument.jpg' %}" class="card-img-top" style="height: 250px; object-fit: cover;">
-                        {% endif %}
+                            {% else %}
+                                <img src="{% static 'default-monument.jpg' %}" class="card-img-top img-fluid"
+                                     style="max-height: 250px; object-fit: cover;" alt="Default monument image">
+                            {% endif %}
 
-                        <div class="card-body">
-                            <h5 class="card-title">{{ monument.name }}</h5>
-                            <p class="card-text">{{ monument.location }}</p>
-                            <a href="{% url 'monument_detail' monument.id %}" class="btn btn-primary">View Details</a>
+                            <div class="card-body">
+                                <h5 class="card-title">{{ monument.name }}</h5>
+                                <p class="card-text">{{ monument.location }}</p>
+                                <a href="{% url 'monument_detail' monument.id %}" class="btn btn-primary">View Details</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            {% endfor %}
-        </div>
-    {% endfor %}
+                {% endfor %}
+            </div>
+        {% endfor %}
+    {% else %}
+        <p class="text-center text-muted">No monuments found for your search.</p>
+    {% endif %}
 </div>
 {% endblock %}

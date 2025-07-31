@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Home - Ticket Trivia{% endblock %}
+
+{% block content %}
+<style>
+    .hero {
+        background: url("{% static 'homepage-bg.jpg' %}") no-repeat center center;
+        background-size: cover;
+        height: 90vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+    }
+
+    .hero h1 {
+        font-size: 4rem;
+        font-weight: bold;
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+    }
+
+    .hero .btn {
+        margin-top: 20px;
+        padding: 12px 24px;
+        font-size: 1.1rem;
+    }
+</style>
+
+<div class="hero">
+    <div>
+        <h1>Welcome to Ticket Trivia!</h1>
+        <p>Explore, book, and experience the beauty of India’s historic monuments and museums.</p>
+        <a href="{% url 'home' %}" class="btn btn-primary">Explore Now</a>
+    </div>
+</div>
+{% endblock %}
